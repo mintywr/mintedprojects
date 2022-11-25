@@ -33,8 +33,7 @@ export const idcsValidateToken = async (req, resp) => {
     console.log(url);
     try {
     let output = await postData (url, tokenBody, "Basic " + authStringEncoded, "application/x-www-form-urlencoded");
-    console.log("OUTPUT from rest api");
-    console.log(output);
+
     resp.status(200).json(output.data);
 
     } catch (error ) {
