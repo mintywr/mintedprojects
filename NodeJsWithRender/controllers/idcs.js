@@ -2,6 +2,8 @@ import https from "https"
 import { postData } from "../utils.js";
 export const idcsValidateToken = async (req, resp) => {
 
+    try {
+
     if (!process.env.iserv) {
         throw new Error ("Environment variable iserv needs to be defined");
     }
@@ -31,7 +33,9 @@ export const idcsValidateToken = async (req, resp) => {
     }
     let url = "https://" + IDCS_SERVER + IDCS_VALIDATE_URL;
     console.log(url);
-    try {
+
+
+
     let output = await postData (url, tokenBody, "Basic " + authStringEncoded, "application/x-www-form-urlencoded");
 
     resp.status(200).json(output.data);
